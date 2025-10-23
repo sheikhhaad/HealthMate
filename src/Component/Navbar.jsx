@@ -32,8 +32,7 @@ const Navbar = () => {
           setId(true);
         }
       } catch (error) {
-        console.error("Profile error:", error.response?.data || error.message);
-        navigate("/");
+        // navigate("/");
       }
     };
     checkuser();

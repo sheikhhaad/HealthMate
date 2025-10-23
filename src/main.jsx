@@ -7,6 +7,8 @@ import Home from "./Page/Home.jsx";
 import Myreport from "./Page/Myreport.jsx";
 import Profile from "./Page/Profile.jsx";
 import Upload from "./Page/Upload.jsx";
+import Login from "./Auth/Login.jsx";
+import Sign from "./Auth/Sign.jsx";
 let rounter = createBrowserRouter([
   {
     path: "",
@@ -31,6 +33,14 @@ let rounter = createBrowserRouter([
       {
         path: "uploadMedia",
         element: <Upload />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Sign />,
       },
     ],
   },
