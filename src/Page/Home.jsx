@@ -57,7 +57,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 m-0 p-0">
+    <div className="min-h-screen bg-linear-to-br from-purple-50 via-pink-50 to-blue-50 m-0 p-0">
       <HeroSection />
       <FeaturesSection features={features} />
       <HowItWorks />
