@@ -6,6 +6,7 @@ import Aireport from "./Page/Aireport.jsx";
 import Home from "./Page/Home.jsx";
 import Myreport from "./Page/Myreport.jsx";
 import Profile from "./Page/Profile.jsx";
+import Upload from "./Page/Upload.jsx";
 let rounter = createBrowserRouter([
   {
     path: "",
@@ -27,7 +28,13 @@ let rounter = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
+      {
+        path: "uploadMedia",
+        element: <Upload />,
+      },
     ],
   },
 ]);
-createRoot(document.getElementById("root")).render(<RouterProvider router={rounter} />);
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={rounter} />
+);

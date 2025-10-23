@@ -44,17 +44,17 @@ const Navbar = () => {
     { name: "Home", path: "/", icon: <FaHome className="text-sm" /> },
     {
       name: "Upload Report",
-      path: "/uploadreport",
+      path: "/uploadMedia",
       icon: <FaUpload className="text-sm" />,
     },
     {
       name: "AI Reports",
-      path: "/Ai",
+      path: "/aireport",
       icon: <FaFileMedical className="text-sm" />,
     },
     {
       name: "My Reports",
-      path: "/Myreports",
+      path: "/myreport",
       icon: <FaChartLine className="text-sm" />,
     },
   ];
