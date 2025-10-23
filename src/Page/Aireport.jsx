@@ -34,7 +34,7 @@ const AiReport = () => {
           setLoading(false);
         }
       } catch (error) {
-        console.error( error.response?.data || error.message);
+        console.error(error.response?.data || error.message);
         navigate("/");
         setLoading(true);
       }

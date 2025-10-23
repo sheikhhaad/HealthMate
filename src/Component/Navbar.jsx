@@ -28,7 +28,7 @@ const Navbar = () => {
           { withCredentials: true }
         );
         if (res.data.user) {
-          console.log("Welcome,", res.data.user.id);
+          // console.log("Welcome,", res.data.user.id);
           setId(true);
         }
       } catch (error) {

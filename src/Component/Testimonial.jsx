@@ -121,9 +121,7 @@ const Testimonials = ({ testimonials }) => (
           Join thousands of satisfied users who transformed their health journey
           with AI
         </p>
-        <AnimatedButton>    
-          Share Your Story
-        </AnimatedButton>
+        <AnimatedButton>Share Your Story</AnimatedButton>
       </div>
     </div>
   </section>

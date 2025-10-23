@@ -21,7 +21,6 @@ const Upload = () => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [loading, setLoading] = useState(true);
 
-
   useEffect(() => {
     const checkuser = async () => {
       try {

@@ -151,9 +151,7 @@ const HowItWorks = () => {
                 Join thousands of users transforming their health with AI
               </p>
             </div>
-            <AnimatedButton filled>
-              Start Your Journey
-            </AnimatedButton>
+            <AnimatedButton filled>Start Your Journey</AnimatedButton>
           </div>
         </div>
       </div>
