@@ -31,8 +31,8 @@ const Profile = () => {
           {},
           { withCredentials: true }
         );
-        if (res.data.user) {
-          console.log(res.data.user);
+        if (res.data) {
+          console.log(res.data);
 
           setUser(res.data.user);
           // Mock stats - replace with actual API calls
@@ -59,7 +59,7 @@ const Profile = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/auth/logout",
+        "http://localhost:5000/api/auth/logout",
         {},
         { withCredentials: true }
       );
@@ -188,7 +188,7 @@ const Profile = () => {
 
               <div className="space-y-3">
                 <button
-                  onClick={() => navigate("/Uploadreport")}
+                  onClick={() => navigate("/uploadMedia")}
                   className="w-full flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-xl hover:bg-green-500/20 transition"
                 >
                   <FaUpload className="text-green-500" />
@@ -196,7 +196,7 @@ const Profile = () => {
                 </button>
 
                 <button
-                  onClick={() => navigate("/Ai")}
+                  onClick={() => navigate("/aireport")}
                   className="w-full flex items-center gap-3 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl hover:bg-blue-500/20 transition"
                 >
                   <FaHistory className="text-blue-500" />

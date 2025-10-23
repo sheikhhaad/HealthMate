@@ -21,8 +21,9 @@ const Upload = () => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Check user
   useEffect(() => {
-    const checkuser = async () => {
+    const checkUser = async () => {
       try {
         const res = await axios.post(
           "http://localhost:5000/api/user",
@@ -30,15 +31,16 @@ const Upload = () => {
           { withCredentials: true }
         );
         if (res.data.user) {
-          console.log("Welcome,", res.data.user.id);
           setId(res.data.user.id);
+          setLoading(false);
         }
       } catch (error) {
-        console.error("Profile error:", error.response?.data || error.message);
+        console.error(error.response?.data || error.message);
         navigate("/");
+        setLoading(true);
       }
     };
-    checkuser();
+    checkUser();
   }, [navigate]);
 
   const handleFileChange = (e) => {
@@ -157,6 +159,17 @@ const Upload = () => {
       setUploadProgress(0);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading your reports...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 flex items-center justify-center px-6 py-16">

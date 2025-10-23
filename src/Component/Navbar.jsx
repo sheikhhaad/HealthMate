@@ -19,25 +19,25 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [id, setId] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const checkuser = async () => {
+    const checkUser = async () => {
       try {
         const res = await axios.post(
           "http://localhost:5000/api/user",
           {},
           { withCredentials: true }
         );
-        if (res.data.user) {
-          // console.log("Welcome,", res.data.user.id);
-          setId(true);
-        }
+        setId(!!res.data);
       } catch (error) {
-        // navigate("/");
+        setId(false);
+      } finally {
+        setLoading(false);
       }
     };
-    checkuser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    checkUser();
+  }, [location]);
+  
 
   const links = [
     { name: "Home", path: "/", icon: <FaHome className="text-sm" /> },
@@ -74,6 +74,17 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading profile...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed top-0 left-0 w-full flex justify-center z-50">
       <nav
@@ -97,21 +108,23 @@ const Navbar = () => {
 
           {/* Center: Links (desktop/tablet only) */}
           <ul className="hidden md:flex items-center gap-3 lg:gap-6 absolute left-1/2 transform -translate-x-1/2">
-            {links.map((link) => (
-              <li key={link.name}>
-                <Link
-                  to={link.path}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs md:text-sm transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? "text-green-500 bg-green-500/10 border border-green-500/20"
-                      : "text-gray-300 hover:text-green-500 hover:bg-gray-800/50"
-                  }`}
-                >
-                  {link.icon}
-                  <span>{link.name}</span>
-                </Link>
-              </li>
-            ))}
+            {id
+              ? links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.path}
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs md:text-sm transition-all duration-300 ${
+                        location.pathname === link.path
+                          ? "text-green-500 bg-green-500/10 border border-green-500/20"
+                          : "text-gray-300 hover:text-green-500 hover:bg-gray-800/50"
+                      }`}
+                    >
+                      {link.icon}
+                      <span>{link.name}</span>
+                    </Link>
+                  </li>
+                ))
+              : ""}
           </ul>
 
           {/* Right: Buttons (desktop/tablet only) */}
